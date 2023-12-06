@@ -1,4 +1,4 @@
-package com.example.hfoodplanner.ui.dashboard;
+package com.example.hfoodplanner.ui.dish_categories;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,18 +10,19 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.hfoodplanner.databinding.FragmentDashboardBinding;
 
-public class DashboardFragment extends Fragment {
+import com.example.hfoodplanner.databinding.FragmentDishCategoriesBinding;
 
-    private FragmentDashboardBinding binding;
+public class DishCategoriesFragment extends Fragment{
+
+    private FragmentDishCategoriesBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        DishCategoriesViewModel dishCategoriesViewModel =
+                new ViewModelProvider(this).get(DishCategoriesViewModel.class);
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentDishCategoriesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
 
