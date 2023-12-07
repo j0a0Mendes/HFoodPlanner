@@ -12,14 +12,20 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_calendar"
+        android:name="com.example.hfoodplanner.ui.calendar.CalendarFragment"
+        android:label="Calendar"
+        tools:layout="@layout/fragment_calendar" />
+
+    <fragment
+        android:id="@+id/navigation_dish_categories"
         android:name="com.example.hfoodplanner.ui.dish_categories.DishCategoriesFragment"
-        android:label="@string/title_notifications"
+        android:label="Dishes"
         tools:layout="@layout/fragment_dish_categories" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.hfoodplanner.ui.dish_categories.DishCategoriesFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dish_categories" />
+        android:id="@+id/navigation_profile"
+        android:name="com.example.hfoodplanner.ui.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

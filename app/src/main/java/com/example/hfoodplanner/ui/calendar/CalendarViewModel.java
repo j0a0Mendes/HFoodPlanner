@@ -1,4 +1,12 @@
 package com.example.hfoodplanner.ui.calendar;
 
-public class CalendarViewModel {
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+
+import java.util.Calendar;
+
+public class CalendarViewModel extends ViewModel {
+
+
 }

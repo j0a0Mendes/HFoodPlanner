@@ -1,4 +1,4 @@
-package com.example.hfoodplanner.ui.calendar;
+package com.example.hfoodplanner.ui.profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,19 +9,19 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.hfoodplanner.databinding.FragmentCalendarBinding;
-import com.example.hfoodplanner.ui.calendar.CalendarViewModel;
+import com.example.hfoodplanner.databinding.FragmentProfileBinding;
+import com.example.hfoodplanner.ui.profile.ProfileViewModel;
 
-public class CalendarFragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
-    private FragmentCalendarBinding binding;
+    private FragmentProfileBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        CalendarViewModel dishCategoriesViewModel =
-                new ViewModelProvider(this).get(CalendarViewModel.class);
+        ProfileViewModel dishCategoriesViewModel =
+                new ViewModelProvider(this).get(ProfileViewModel.class);
 
-        binding = FragmentCalendarBinding.inflate(inflater, container, false);
+        binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
 
