@@ -1,23 +1,419 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.calendar.CalendarFragment">
 
-    <TextView
-        android:id="@+id/text_calendar"
+    <LinearLayout
+        android:id="@+id/week_change"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="CALENDAR"
+        android:layout_height="60sp"
+        android:gravity="center"
+        android:layout_marginTop="30sp"
+        android:layout_marginBottom="20sp">
+    <ImageView
+        android:id="@+id/arrow_previous"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:src="@drawable/ic_arrow_previous"
+        android:contentDescription="previous_week_button" />
+
+    <TextView
+        android:id="@+id/current_year"
+        android:layout_width="230sp"
+        android:layout_height="80sp"
+        android:text="3 December"
+        android:textSize="24sp"
+        android:layout_toEndOf="@id/arrow_previous"
         android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:gravity="center"/>
+
+
+        <ImageView
+            android:id="@+id/arrow_next"
+            android:layout_width="80sp"
+            android:layout_height="80sp"
+            android:layout_toRightOf="@id/current_year"
+            android:contentDescription="next_week_button"
+            android:src="@drawable/ic_arrow_next" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/week_display"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/week_change"
+        android:gravity="center">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/day_one"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10sp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/month_day_one"
+                    android:layout_width="31dp"
+                    android:layout_height="20dp"
+                    android:text="3"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.313"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/week_day_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/month_day_one"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/day_two"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10sp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/month_day_two"
+                    android:layout_width="31dp"
+                    android:layout_height="20dp"
+                    android:text="4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.313"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/week_day_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tue"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/month_day_two"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/day_three"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10sp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/month_day_three"
+                    android:layout_width="31dp"
+                    android:layout_height="20dp"
+                    android:text="5"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.313"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/week_day_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Wed"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/month_day_three"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/day_four"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10sp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/month_day_four"
+                    android:layout_width="31dp"
+                    android:layout_height="20dp"
+                    android:text="6"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.313"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/week_day_four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thu"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/month_day_four"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/day_five"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10sp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/month_day_five"
+                    android:layout_width="31dp"
+                    android:layout_height="20dp"
+                    android:text="7"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.313"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/week_day_five"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fri"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/month_day_five"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/weekend_display"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/week_display"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="0sp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/day_six"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10sp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/month_day_six"
+                    android:layout_width="31dp"
+                    android:layout_height="20dp"
+                    android:text="8"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.313"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/week_day_six"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sat"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/month_day_six"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/day_seven"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10sp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/month_day_seven"
+                    android:layout_width="31dp"
+                    android:layout_height="20dp"
+                    android:text="9"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.313"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/week_day_seven"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sun"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/month_day_seven"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lunch_display"
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        android:orientation="horizontal"
+        android:layout_below="@id/weekend_display">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/lunch_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lunch:"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.069"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.19" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/lunch_meal"
+                android:layout_width="300sp"
+                android:layout_height="60sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lunch_label"
+                app:layout_constraintVertical_bias="0.375">
+
+                <TextView
+                    android:id="@+id/lunch_meal_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Lasagna"
+                    android:textSize="20sp"
+                    android:gravity="center"/>
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/dinner_display"
+        android:layout_width="match_parent"
+        android:layout_height="150sp"
+        android:orientation="horizontal"
+        android:layout_below="@id/lunch_display">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/dinner_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dinner:"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.069"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.19" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="300sp"
+                android:layout_height="60sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dinner_label"
+                app:layout_constraintVertical_bias="0.375">
+
+                <TextView
+                    android:id="@+id/dinner_meal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Salmon"
+                    android:textSize="20sp"
+                    android:gravity="center"/>
+            </androidx.cardview.widget.CardView>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:layout_below="@id/dinner_display"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="150sp"
+            android:layout_height="50sp"
+            android:text="Edit day" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
