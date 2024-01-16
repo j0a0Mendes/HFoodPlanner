@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,7 +32,12 @@ public class CalendarFragment extends Fragment {
     private FragmentCalendarBinding binding;
 
     private MainActivity activity;
-    private int currentWeekIndex = 0;
+    private int currentDayIndex = 0;
+    public static final int lowerIndexThreshold = -7;
+    public static final int upperIndexThreshold = 7;
+
+    public ImageView previousArrow;
+    public ImageView nextArrow;
     private ArrayList<Integer> weekDays;
 
     @SuppressLint("SetTextI18n")
@@ -50,7 +56,26 @@ public class CalendarFragment extends Fragment {
 
         Log.d("Week", String.valueOf(weekDays));
 
+        //set the today's date
+        currentDayIndex = 0;
+
         setUpWeekMechanism(root);
+
+        previousArrow = root.findViewById(R.id.arrow_previous);
+        previousArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goOnPreviousDay();
+            }
+        });
+
+        nextArrow = root.findViewById(R.id.arrow_next);
+        nextArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goOnNextDay();
+            }
+        });
 
 
         return root;
@@ -63,6 +88,11 @@ public class CalendarFragment extends Fragment {
     }
 
     public void setUpWeekMechanism(View root) {
+        //updating current selected day
+        TextView tv_currentDay = root.findViewById(R.id.current_year);
+        tv_currentDay.setText(activity.getCurrentWeekDay());
+
+
         //set the week days of the month
         TextView tv_firstDay = root.findViewById(R.id.month_day_one);
         tv_firstDay.setText(weekDays.get(0).toString());
@@ -114,4 +144,53 @@ public class CalendarFragment extends Fragment {
                 break;
         }
     }
+
+
+    public void goOnNextDay(){
+        if(currentDayIndex +1 <= 1){        //substitute with final threshold variables
+            currentDayIndex += 1;
+
+            if(currentDayIndex == 1){       //substitute with final threshold variables
+                removeNextArrow();
+            }else{
+                addPreviousArrow();
+            }
+        }
+    }
+
+    public void goOnPreviousDay(){
+        if(currentDayIndex -1 >= -1){        //substitute with final threshold variables   //can go 7 days before the current one
+            currentDayIndex -= 1;            //substitute with final threshold variables   //decreases the index
+
+            if(currentDayIndex == -1){
+                removePreviousArrow();
+            }else{
+                addNextArrow();
+            }
+
+        }
+    }
+
+    public void removePreviousArrow(){
+        previousArrow.setVisibility(View.INVISIBLE);
+        previousArrow.setClickable(false);
+    }
+
+    public void addPreviousArrow(){
+        previousArrow.setVisibility(View.VISIBLE);
+        previousArrow.setClickable(true);
+    }
+
+    public void removeNextArrow(){
+        nextArrow.setVisibility(View.INVISIBLE);
+        nextArrow.setClickable(false);
+    }
+
+    public void addNextArrow(){
+        nextArrow.setVisibility(View.VISIBLE);
+        nextArrow.setClickable(true);
+    }
+
+
+
 }

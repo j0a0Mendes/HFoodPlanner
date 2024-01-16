@@ -89,4 +89,6 @@ public class MainActivity extends AppCompatActivity {
 
     public String getCurrentWeekDay(){ return currentDayOfWeek.toString();}
 
+
+
 }

@@ -20,17 +20,17 @@
         android:src="@drawable/ic_arrow_previous"
         android:contentDescription="previous_week_button" />
 
-    <TextView
-        android:id="@+id/current_year"
-        android:layout_width="230sp"
-        android:layout_height="80sp"
-        android:text="3 December"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:layout_toEndOf="@id/arrow_previous"
-        android:textAlignment="center"
-        android:gravity="center"/>
 
+        <TextView
+            android:id="@+id/current_year"
+            android:layout_width="230sp"
+            android:layout_height="80sp"
+            android:layout_toEndOf="@id/arrow_previous"
+            android:gravity="center"
+            android:text="3 December"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/arrow_next"
