@@ -18,7 +18,8 @@
         android:layout_width="80sp"
         android:layout_height="80sp"
         android:src="@drawable/ic_arrow_previous"
-        android:contentDescription="previous_week_button" />
+        android:contentDescription="previous_week_button"
+        android:visibility="invisible"/>
 
 
         <TextView

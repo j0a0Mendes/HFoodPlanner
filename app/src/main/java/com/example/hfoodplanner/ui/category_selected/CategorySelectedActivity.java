@@ -2,6 +2,7 @@ package com.example.hfoodplanner.ui.category_selected;
 
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -24,12 +25,16 @@ public class CategorySelectedActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
 
+        getSupportActionBar().hide();
+
         if(extras != null){
             category = extras.getString("category");
         }
 
+
         binding = ActivityCategorySelectedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
 
         ((TextView) findViewById(R.id.text_category_selected)).setText(category);
     }

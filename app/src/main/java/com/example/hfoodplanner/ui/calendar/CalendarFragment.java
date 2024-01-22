@@ -1,5 +1,7 @@
 package com.example.hfoodplanner.ui.calendar;
 
+import static android.R.color.darker_gray;
+import static android.R.color.holo_blue_light;
 import static android.R.color.holo_green_light;
 
 import android.annotation.SuppressLint;
@@ -33,12 +35,18 @@ public class CalendarFragment extends Fragment {
 
     private MainActivity activity;
     private int currentDayIndex = 0;
-    public static final int lowerIndexThreshold = -7;
-    public static final int upperIndexThreshold = 7;
+
+    public int upperIndexThreshold = 6;
 
     public ImageView previousArrow;
     public ImageView nextArrow;
     private ArrayList<Integer> weekDays;
+
+    private String daySelected = "";
+
+    private TextView tv_currentDay;
+
+    private View root;
 
     @SuppressLint("SetTextI18n")
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -47,7 +55,7 @@ public class CalendarFragment extends Fragment {
                 new ViewModelProvider(this).get(CalendarViewModel.class);
 
         binding = FragmentCalendarBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
+        root = binding.getRoot();
 
         activity = (MainActivity)getActivity();
 
@@ -89,8 +97,12 @@ public class CalendarFragment extends Fragment {
 
     public void setUpWeekMechanism(View root) {
         //updating current selected day
-        TextView tv_currentDay = root.findViewById(R.id.current_year);
+        tv_currentDay = root.findViewById(R.id.current_year);
         tv_currentDay.setText(activity.getCurrentWeekDay());
+
+        daySelected = activity.getCurrentWeekDay();
+        //it will start on the first day, you will not go backwards no the week
+        //removePreviousArrow();
 
 
         //set the week days of the month
@@ -118,57 +130,214 @@ public class CalendarFragment extends Fragment {
         CardView cv_Sun = root.findViewById(R.id.day_seven);
 
 
-        int green = getResources().getColor(holo_green_light);
+        int blue = getResources().getColor(holo_blue_light);
+        int gray = getResources().getColor(darker_gray);
 
         switch (activity.getCurrentWeekDay()){
             case "MONDAY":
-                cv_Mon.setCardBackgroundColor(green);
+                cv_Mon.setCardBackgroundColor(blue);
                 break;
             case "TUESDAY":
-                cv_Tue.setCardBackgroundColor(green);
+                upperIndexThreshold = 5;
+                cv_Mon.setCardBackgroundColor(gray);
+                cv_Tue.setCardBackgroundColor(blue);
                 break;
             case "WEDNESDAY":
-                cv_Wed.setCardBackgroundColor(green);
+                upperIndexThreshold = 4;
+                cv_Mon.setCardBackgroundColor(gray);
+                cv_Tue.setCardBackgroundColor(gray);
+                cv_Wed.setCardBackgroundColor(blue);
                 break;
             case "THURSDAY":
-                cv_Thu.setCardBackgroundColor(green);
+                upperIndexThreshold = 3;
+                cv_Mon.setCardBackgroundColor(gray);
+                cv_Tue.setCardBackgroundColor(gray);
+                cv_Wed.setCardBackgroundColor(gray);
+                cv_Thu.setCardBackgroundColor(blue);
                 break;
             case "FRIDAY":
-                cv_Fri.setCardBackgroundColor(green);
+                upperIndexThreshold = 2;
+                cv_Mon.setCardBackgroundColor(gray);
+                cv_Tue.setCardBackgroundColor(gray);
+                cv_Wed.setCardBackgroundColor(gray);
+                cv_Thu.setCardBackgroundColor(gray);
+                cv_Fri.setCardBackgroundColor(blue);
                 break;
             case "SATURDAY":
-                cv_Sat.setCardBackgroundColor(green);
+                upperIndexThreshold = 1;
+                cv_Mon.setCardBackgroundColor(gray);
+                cv_Tue.setCardBackgroundColor(gray);
+                cv_Wed.setCardBackgroundColor(gray);
+                cv_Thu.setCardBackgroundColor(gray);
+                cv_Fri.setCardBackgroundColor(gray);
+                cv_Sat.setCardBackgroundColor(blue);
                 break;
             case "SUNDAY":
-                cv_Sun.setCardBackgroundColor(green);
+                cv_Mon.setCardBackgroundColor(gray);
+                cv_Tue.setCardBackgroundColor(gray);
+                cv_Wed.setCardBackgroundColor(gray);
+                cv_Thu.setCardBackgroundColor(gray);
+                cv_Fri.setCardBackgroundColor(gray);
+                cv_Sat.setCardBackgroundColor(gray);
+                cv_Sun.setCardBackgroundColor(blue);
                 break;
         }
     }
 
 
     public void goOnNextDay(){
-        if(currentDayIndex +1 <= 1){        //substitute with final threshold variables
+        if(currentDayIndex +1 <= upperIndexThreshold){        //substitute with final threshold variables
             currentDayIndex += 1;
 
-            if(currentDayIndex == 1){       //substitute with final threshold variables
+            if(currentDayIndex == upperIndexThreshold){       //substitute with final threshold variables
                 removeNextArrow();
             }else{
                 addPreviousArrow();
             }
+
+            daySelected = getAdjacentDay(daySelected,true);
+            updateSelectedNextDay();
+
+            tv_currentDay.setText(daySelected);
+
         }
     }
 
     public void goOnPreviousDay(){
-        if(currentDayIndex -1 >= -1){        //substitute with final threshold variables   //can go 7 days before the current one
+        if(currentDayIndex -1 >= 0){        //substitute with final threshold variables   //can go 7 days before the current one
             currentDayIndex -= 1;            //substitute with final threshold variables   //decreases the index
 
-            if(currentDayIndex == -1){
+            if(currentDayIndex == 0){
                 removePreviousArrow();
             }else{
                 addNextArrow();
             }
 
+            daySelected = getAdjacentDay(daySelected,false);
+            updateSelectedPreviousDay();
+
+            tv_currentDay.setText(daySelected);
+
         }
+    }
+
+    public void updateSelectedNextDay(){
+        CardView cv_Mon = root.findViewById(R.id.day_one);
+        CardView cv_Tue = root.findViewById(R.id.day_two);
+        CardView cv_Wed = root.findViewById(R.id.day_three);
+        CardView cv_Thu = root.findViewById(R.id.day_four);
+        CardView cv_Fri = root.findViewById(R.id.day_five);
+        CardView cv_Sat = root.findViewById(R.id.day_six);
+        CardView cv_Sun = root.findViewById(R.id.day_seven);
+
+        int blue = getResources().getColor(holo_blue_light);
+        int white = getResources().getColor(android.R.color.white);
+
+        switch (daySelected){
+            case "MONDAY":
+                cv_Mon.setCardBackgroundColor(blue);
+                break;
+            case "TUESDAY":
+                cv_Mon.setCardBackgroundColor(white);
+                cv_Tue.setCardBackgroundColor(blue);
+                break;
+            case "WEDNESDAY":
+                cv_Tue.setCardBackgroundColor(white);
+                cv_Wed.setCardBackgroundColor(blue);
+                break;
+            case "THURSDAY":
+                cv_Wed.setCardBackgroundColor(white);
+                cv_Thu.setCardBackgroundColor(blue);
+                break;
+            case "FRIDAY":
+                cv_Thu.setCardBackgroundColor(white);
+                cv_Fri.setCardBackgroundColor(blue);
+                break;
+            case "SATURDAY":
+                cv_Fri.setCardBackgroundColor(white);
+                cv_Sat.setCardBackgroundColor(blue);
+                break;
+            case "SUNDAY":
+                cv_Sat.setCardBackgroundColor(white);
+                cv_Sun.setCardBackgroundColor(blue);
+                break;
+        }
+    }
+
+    public void updateSelectedPreviousDay(){
+        CardView cv_Mon = root.findViewById(R.id.day_one);
+        CardView cv_Tue = root.findViewById(R.id.day_two);
+        CardView cv_Wed = root.findViewById(R.id.day_three);
+        CardView cv_Thu = root.findViewById(R.id.day_four);
+        CardView cv_Fri = root.findViewById(R.id.day_five);
+        CardView cv_Sat = root.findViewById(R.id.day_six);
+        CardView cv_Sun = root.findViewById(R.id.day_seven);
+
+        int blue = getResources().getColor(holo_blue_light);
+        int white = getResources().getColor(android.R.color.white);
+
+        switch (daySelected){
+            case "MONDAY":
+                cv_Mon.setCardBackgroundColor(blue);
+                cv_Tue.setCardBackgroundColor(white);
+                break;
+            case "TUESDAY":
+                cv_Wed.setCardBackgroundColor(white);
+                cv_Tue.setCardBackgroundColor(blue);
+                break;
+            case "WEDNESDAY":
+                cv_Thu.setCardBackgroundColor(white);
+                cv_Wed.setCardBackgroundColor(blue);
+                break;
+            case "THURSDAY":
+                cv_Fri.setCardBackgroundColor(white);
+                cv_Thu.setCardBackgroundColor(blue);
+                break;
+            case "FRIDAY":
+                cv_Sat.setCardBackgroundColor(white);
+                cv_Fri.setCardBackgroundColor(blue);
+                break;
+            case "SATURDAY":
+                cv_Sun.setCardBackgroundColor(white);
+                cv_Sat.setCardBackgroundColor(blue);
+                break;
+            case "SUNDAY":
+                cv_Sun.setCardBackgroundColor(blue);
+                break;
+        }
+    }
+
+
+    public static String getAdjacentDay(String currentDay, boolean getNextDay) {
+        String[] daysOfWeek = {"MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"};
+
+        // Convert the input to uppercase to handle case variations
+        String currentDayUpperCase = currentDay.toUpperCase();
+
+        // Find the index of the current day in the array
+        int currentDayIndex = -1;
+        for (int i = 0; i < daysOfWeek.length; i++) {
+            if (daysOfWeek[i].equals(currentDayUpperCase)) {
+                currentDayIndex = i;
+                break;
+            }
+        }
+
+        // Check if the input day is valid
+        if (currentDayIndex == -1) {
+            return "Invalid day";
+        }
+
+        // Calculate the index of the adjacent day using modular arithmetic
+        int adjacentDayIndex;
+        if (getNextDay) {
+            adjacentDayIndex = (currentDayIndex + 1) % 7;
+        } else {
+            adjacentDayIndex = (currentDayIndex - 1 + 7) % 7;
+        }
+
+        // Return the name of the adjacent day
+        return daysOfWeek[adjacentDayIndex];
     }
 
     public void removePreviousArrow(){
