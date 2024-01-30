@@ -4,6 +4,7 @@ import static android.R.color.darker_gray;
 import static android.R.color.holo_blue_light;
 import static android.R.color.holo_green_light;
 
+
 import android.annotation.SuppressLint;
 import android.os.Build;
 import android.os.Bundle;
@@ -130,7 +131,7 @@ public class CalendarFragment extends Fragment {
         CardView cv_Sun = root.findViewById(R.id.day_seven);
 
 
-        int blue = getResources().getColor(holo_blue_light);
+        int blue = getResources().getColor(holo_green_light);
         int gray = getResources().getColor(darker_gray);
 
         switch (activity.getCurrentWeekDay()){
@@ -230,7 +231,7 @@ public class CalendarFragment extends Fragment {
         CardView cv_Sat = root.findViewById(R.id.day_six);
         CardView cv_Sun = root.findViewById(R.id.day_seven);
 
-        int blue = getResources().getColor(holo_blue_light);
+        int blue = getResources().getColor(holo_green_light);
         int white = getResources().getColor(android.R.color.white);
 
         switch (daySelected){
@@ -273,7 +274,7 @@ public class CalendarFragment extends Fragment {
         CardView cv_Sat = root.findViewById(R.id.day_six);
         CardView cv_Sun = root.findViewById(R.id.day_seven);
 
-        int blue = getResources().getColor(holo_blue_light);
+        int blue = getResources().getColor(holo_green_light);
         int white = getResources().getColor(android.R.color.white);
 
         switch (daySelected){

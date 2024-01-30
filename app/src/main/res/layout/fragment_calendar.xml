@@ -52,10 +52,11 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/day_one"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:layout_marginRight="10sp">
+            android:layout_marginRight="10sp"
+            app:cardCornerRadius="15dp">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -87,10 +88,12 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/day_two"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:layout_marginRight="10sp">
+            android:layout_marginRight="10sp"
+            app:cardCornerRadius="15dp">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -122,10 +125,12 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/day_three"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:layout_marginRight="10sp">
+            android:layout_marginRight="10sp"
+            app:cardCornerRadius="15dp">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -157,10 +162,12 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/day_four"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:layout_marginRight="10sp">
+            android:layout_marginRight="10sp"
+            app:cardCornerRadius="15dp">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -192,10 +199,12 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/day_five"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:layout_marginRight="10sp">
+            android:layout_marginRight="10sp"
+            app:cardCornerRadius="15dp">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -237,10 +246,12 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/day_six"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:layout_marginRight="10sp">
+            android:layout_marginRight="10sp"
+            app:cardCornerRadius="15dp">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -272,10 +283,12 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/day_seven"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:layout_marginRight="10sp">
+            android:layout_marginRight="10sp"
+            app:cardCornerRadius="15dp">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -309,7 +322,7 @@
     <LinearLayout
         android:id="@+id/lunch_display"
         android:layout_width="match_parent"
-        android:layout_height="150sp"
+        android:layout_height="200sp"
         android:orientation="horizontal"
         android:layout_below="@id/weekend_display">
 
@@ -335,13 +348,14 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/lunch_meal"
                 android:layout_width="300sp"
-                android:layout_height="60sp"
+                android:layout_height="100sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/lunch_label"
-                app:layout_constraintVertical_bias="0.375">
+                app:layout_constraintVertical_bias="0.375"
+                app:cardCornerRadius="15dp">
 
                 <TextView
                     android:id="@+id/lunch_meal_name"
@@ -359,7 +373,7 @@
     <LinearLayout
         android:id="@+id/dinner_display"
         android:layout_width="match_parent"
-        android:layout_height="150sp"
+        android:layout_height="200sp"
         android:orientation="horizontal"
         android:layout_below="@id/lunch_display">
 
@@ -385,13 +399,14 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
                 android:layout_width="300sp"
-                android:layout_height="60sp"
+                android:layout_height="100sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/dinner_label"
-                app:layout_constraintVertical_bias="0.375">
+                app:layout_constraintVertical_bias="0.375"
+                app:cardCornerRadius="15dp">
 
                 <TextView
                     android:id="@+id/dinner_meal"
@@ -406,18 +421,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="100sp"
-        android:layout_below="@id/dinner_display"
-        android:gravity="center">
 
-        <Button
-            android:layout_width="150sp"
-            android:layout_height="50sp"
-            android:text="Edit day" />
-
-    </LinearLayout>
 
 
 </RelativeLayout>
